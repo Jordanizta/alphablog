@@ -1,11 +1,9 @@
 class WelcomeController < ApplicationController
 
-    def home
+	def home
+		@nome = 'Emanuel'
+	end
 
-    end
-
-    def about
-
-    end
+	def about; end
 
 end
