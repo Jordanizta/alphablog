@@ -1,4 +1,10 @@
 <h1>This is the homepage</h1>
 <h4><%= @nome %></h4>
-<%= link_to 'About', about_path %>
-<%= link_to 'Articles TESTE', articles_path %>
+<table>
+    <tbody>
+        <tr>
+            <td><%= link_to 'About', about_path %></td>
+            <td><%= link_to 'Alpha Blog', articles_path %></td>
+        </tr>
+    </tbody>
+</table>

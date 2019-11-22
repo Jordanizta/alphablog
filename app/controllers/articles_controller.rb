@@ -4,7 +4,14 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    sort_list = []
+    sort_list << params[:ID] if params[:ID]
+
+    if sort_list.blank?
+      @articles = Article.order("autor")
+    else
+      @articles = Article.order("id")
+    end
   end
 
   # GET /articles/1
@@ -70,6 +77,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :description, :autor)
+      params.require(:article).permit(:title, :description, :autor, :article)
     end
 end
