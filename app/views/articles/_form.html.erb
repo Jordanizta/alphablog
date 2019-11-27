@@ -11,22 +11,43 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+<div class= "form-horizontal">
+  <div class='col-xs-12'>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+    <div class="form-group">
+      <div class ="control-label col-sm-2">
+        <%= form.label :title %>
+      </div>
+      <div class="col-sm-8">
+        <%= form.text_field :title, class: "form-control", placeholder: "Título do artigo", autofocus: true %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :autor %>
-    <%= form.text_area :autor %>
-  </div>
+    <div class="form-group">
+      <div class="control-label col-sm-2">
+        <%= form.label :description %>
+      </div>
+      <div class="col-sm-8">
+        <%= form.text_area :description, class: "form-control", placeholder: "Descrição do artigo", autofocus: true %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="form-group">
+      <div class="control-label col-sm-2">
+        <%= form.label :autor %>
+      </div>
+      <div class="col-sm-8">
+        <%= form.text_area :autor, class: "form-control", placeholder: "Autor do artigo", autofocus: true %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= form.submit class: 'btn btn-danger btn-lg' %>
+      </div>
+    </div>
+
+  <% end %>
   </div>
-<% end %>
+</div>
+

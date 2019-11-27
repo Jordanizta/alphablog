@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
     if params[:order]
       @articles = Article.order(params[:order])
     else
-      @articles = Article.order(:autor)
+      @articles = Article.order(:id)
     end
   end
 
