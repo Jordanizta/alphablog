@@ -2,44 +2,7 @@
 
 <h1 style="color:DodgerBlue">Listando todos os artigos</h1>
 
-<table>
-  <thead>
-    <tr style="color:MediumSeaGreen">
-      <th>ID</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Author</th>
-      <th>Data criação</th>
-      <th>Data atualização</th>
-      <th>Usuário</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.id %></td>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= article.autor %></td>
-        <td><%= article.created_at %></td>
-        <td><%= article.updated_at %></td>
-        <td><%= article.user.username if article.user%>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-
-  <%= form_tag articles_path, method: :get do %>
-    Ordenar por:
-    <%= select_tag :order,  options_for_select([:id, :autor, :updated_at], selected: :autor), id: "different_option_value_html", onchange: "this.form.submit();"%>
-    <%= submit_tag 'Ordenar', :id => 'submit_button' %>
-  <% end %>
-
-</table>
+<%= render 'index', articles: @articles %>
 
 <br>
 
