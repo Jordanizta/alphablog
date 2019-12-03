@@ -2,7 +2,14 @@
 
 <h1 style="color:DodgerBlue">Listando todos os artigos</h1>
 
+<div align="center">
+  <%= will_paginate @articles %>
+</div>
 <%= render 'index', articles: @articles %>
+<div align="center">
+  <%= will_paginate %>
+</div>
+
 
 <br>
 

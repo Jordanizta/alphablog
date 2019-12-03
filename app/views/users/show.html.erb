@@ -7,3 +7,4 @@
 
 <h4 class="center">Artigos de <%= @user.username %></h4>
 <%= render 'articles/index', articles: @user.articles %>
+<%= link_to 'Voltar a listagem de blogueiros', users_path %>

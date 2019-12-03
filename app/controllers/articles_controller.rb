@@ -4,11 +4,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    if params[:order]
-      @articles = Article.order(params[:order])
-    else
-      @articles = Article.order(:id)
-    end
+    @articles = Article.paginate(page: params[:page])
+  
   end
 
   # GET /articles/1
