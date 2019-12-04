@@ -1,0 +1,32 @@
+<h1 class="center">Entrar</h1>
+
+<%= form_for(:session, url:login_path) do |form| %>
+    <div class= "form-horizontal">
+      <div class='col-xs-12'>
+        <div class="form-group">
+          <div class ="control-label col-sm-2">
+            <%= form.label :email %>
+          </div>
+          <div class="col-sm-8">
+            <%= form.email_field :email, class: "form-control", placeholder: "Digite seu email", autofocus: true %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="control-label col-sm-2">
+            <%= form.label :password %>
+          </div>
+          <div class="col-sm-8">
+            <%= form.password_field :password, class: "form-control", class: "form-control", autocomplete: "off" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+              <%= form.submit "Entrar", class: 'btn btn-danger btn-lg' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% end %>
