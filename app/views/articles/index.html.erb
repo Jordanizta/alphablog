@@ -1,16 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1 style="color:DodgerBlue">Listando todos os artigos</h1>
+<h1 style="color:#6441a5">Listando todos os artigos</h1>
 
 <div align="center">
-  <%= will_paginate @articles %>
+  <%= will_paginate %>
 </div>
 <%= render 'index', articles: @articles %>
 <div align="center">
   <%= will_paginate %>
 </div>
-
-
 <br>
 
 <%= link_to 'Página inicial', root_path %>  |  

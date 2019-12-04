@@ -4,7 +4,12 @@
         <%= gravatar_for @user, size: 100 %>
     </div>
 </div>
-
 <h4 class="center">Artigos de <%= @user.username %></h4>
-<%= render 'articles/index', articles: @user.articles %>
+<div class="center">
+    <%= will_paginate @user_articles %>
+</div>
+<%= render 'articles/index', articles: @user_articles %>
+<div class="center">
+    <%= will_paginate @user_articles %>
+</div>
 <%= link_to 'Voltar a listagem de blogueiros', users_path %>
