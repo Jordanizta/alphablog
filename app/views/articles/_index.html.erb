@@ -18,7 +18,7 @@
         <td><%= article.autor %></td>
         <td><%= article.user.username if article.user%>
         <td><%= link_to 'Mostrar', article, class: "btn btn-xs btn-success" %></td>
-        <% if logged_in? && current_user == article.user %>
+        <% if logged_in? && (current_user == article.user || current_user.admin?) %>
           <td><%= link_to 'Editar', edit_article_path(article), class: "btn btn-xs btn-primary" %></td>
           <td><%= link_to 'Deletar', article, method: :delete, data: {confirm: 'Tem certeza que deseja deletar?'},
           class: "btn btn-xs btn-danger" %></td>

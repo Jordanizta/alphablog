@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.paginate(page: params[:page], per_page: 10)
-  
+
   end
 
   # GET /articles/1
@@ -28,11 +28,11 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = current_user
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to @article, notice: 'Artigo criado com sucesso.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -77,7 +77,7 @@ class ArticlesController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @article.user
+      if current_user != @article.user and !current_user.admin?
         flash[:danger] = "Você só pode editar ou deletar os seus próprios artigos"
         redirect_to root_path
       end
