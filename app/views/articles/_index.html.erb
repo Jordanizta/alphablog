@@ -1,36 +1,28 @@
-<table>
-  <thead>
-    <tr style="color:#6441a5">
-      <th>ID</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Author</th>
-      <th>Usuário</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% articles.each do |article| %>
-      <tr>
-        <td><%= article.id %></td>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= article.autor %></td>
-        <td><%= article.user.username if article.user%>
-        <td><%= link_to 'Mostrar', article, class: "btn btn-xs btn-success" %></td>
-        <% if logged_in? && (current_user == article.user || current_user.admin?) %>
-          <td><%= link_to 'Editar', edit_article_path(article), class: "btn btn-xs btn-primary" %></td>
-          <td><%= link_to 'Deletar', article, method: :delete, data: {confirm: 'Tem certeza que deseja deletar?'},
-          class: "btn btn-xs btn-danger" %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-
+<% articles.each do |article| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="article-title">
+          <%= link_to article.title, article_path(article) %>
+        </div>
+        <div class="article-body">
+          <%= truncate(article.description, length: 280) %>
+        </div>
+        <div class="article-actions">
+          <% if logged_in? && current_user == article.user %>
+            <%= link_to "Editar esse artigo", edit_article_path(article), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Deletar esse artigo", article_path(article), method: :delete,
+            data: {confirm: "Certeza que deseja deletar?"}, 
+            class: "btn btn-xs btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+  <!-- #ordenação 
   <%= form_tag articles_path, method: :get do %>
     Ordenar por:
     <%= select_tag :order,  options_for_select([:id, :autor, :updated_at], selected: :autor), id: "different_option_value_html", onchange: "this.form.submit();"%>
     <%= submit_tag 'Ordenar', :id => 'submit_button' %>
-  <% end %>
-
-</table>
+  <% end %> -->
