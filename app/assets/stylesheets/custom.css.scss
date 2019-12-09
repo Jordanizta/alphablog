@@ -39,13 +39,35 @@ $navbar-default-bg: #6441a5;
     font-size: 1.7em;
 }
 
-.btn-danger {
+.article-actions {
+    border-top: 1px solid #eaeaea;
+    padding-top: 5px;
+}
+
+.description {
+    margin-top: 0;
+}
+
+.article-title {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.article-body {
+    border-top: 1px solid #eaeaea;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+.btn-blog {
     background-color: #6441a5;
     color: white;
     border: #6441a5;
 }
 
 .btn {
+    color: white;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
 }
@@ -53,12 +75,6 @@ $navbar-default-bg: #6441a5;
 .btn:hover {
     background-color: #bba4e2;
     color: white;
-}
-
-.article-body {
-    border-top: 1px solid #eaeaea;
-    padding-top: 15px;
-    padding-bottom: 15px;
 }
 
 .listing {
