@@ -1,40 +1,32 @@
 require 'test_helper'
 
-class Category < ActiveSupport::TestCase
+class CategoryTest < ActiveSupport::TestCase
 
     def setup
         @category = Category.new(name: "sports")
     end
 
-    def save
-        
-    end
-
-    def valid?
-        
-    end
-
-    test "category should be valid" do
+    test "categoria deve ser valida" do
         assert @category.valid?
     end
 
-    test "name should be present" do
+    test "nome deve estar presente" do
         @category.name = " "
         assert_not @category.valid?
     end
 
-    test "name should be unique" do
+    test "nome deve ser unico" do
         @category.save
         category2 = Category.new(name: "sports")
         assert_not category2.valid?
     end
 
-    test "name should not be too long" do
+    test "nome nao deve ser muito longo" do
         @category.name = "a" * 26
         assert_not @category.valid?
     end
 
-    test "name should not be too short" do
+    test "nome nao deve ser muito curto" do
         @category.name = "aa"
         assert_not @category.valid?
     end
