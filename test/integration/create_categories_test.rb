@@ -10,7 +10,7 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
 			follow_redirect!
 		end
 		assert_template 'categories/index'
-		assert_match "sports", reponse.body
+		assert_match "sports", response.body
 	end
 
 end
