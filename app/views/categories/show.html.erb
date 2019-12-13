@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="center" style="color:#6441a5"><%= "Categoria: " + @category.name %></h1>
+
+<div align="center">
+  <%= will_paginate @category_articles %>
+</div>
+<%= render 'articles/index', articles: @category_articles %>
+<div align="center">
+  <%= will_paginate @category_articles %>
+</div>
+<br>
+
+<%= link_to 'Página inicial', root_path %>  |  
+<%= link_to 'New Article', new_article_path %>
