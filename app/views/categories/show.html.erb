@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1 class="center" style="color:#6441a5"><%= "Categoria: " + @category.name %></h1>
-
+  <% if logged_in? and current_user.admin? %>
+    <div class="row">
+      <span class="badge"><%= link_to "Editar nome de categoria", edit_category_path(@category) %></span>
+    </div>
+  <% end %>
 <div align="center">
   <%= will_paginate @category_articles %>
 </div>

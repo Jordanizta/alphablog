@@ -1,27 +1,3 @@
 <h1 align="center">Criar nova categoria</h1>
 
-<%= form_with(model: @category, local: true) do |form| %>
-
-  <%= render 'layouts/shared/form/errors', object: @category %>
-
-    <div class= "form-horizontal">
-      <div class='col-xs-12'>
-
-        <div class="form-group">
-          <div class ="control-label col-sm-2">
-            <%= form.label :name %>
-          </div>
-          <div class="col-sm-8">
-            <%= form.text_field :name, class: "form-control", placeholder: "Nome da categoria", autofocus: true %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-              <%= form.submit class: 'btn btn-blog btn-lg' %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<% end %>
+<%= render 'form' %>
