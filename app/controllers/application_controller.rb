@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+    before_action :set_dropdown_categories
     helper_method :current_user, :logged_in?
 
     def current_user
@@ -16,4 +16,9 @@ class ApplicationController < ActionController::Base
             redirect_to root_path
         end
     end
+
+    def set_dropdown_categories
+        @dropdown_categories = Category.all
+    end
+
 end
