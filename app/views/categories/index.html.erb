@@ -10,6 +10,12 @@
             <%= link_to "#{category.name}", category_path(category) %>
           </li>
           <li><small><%= pluralize(category.articles.count, "artigos") %></small></li>
+          <% if logged_in? and current_user.admin? %>
+            <% if category.articles.empty? %>
+              <span class="badge"><%= link_to "Deletar categoria", category_path(category), method: :delete,
+            data: { confirm: "Tem certeza?" } %></span>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </ul>

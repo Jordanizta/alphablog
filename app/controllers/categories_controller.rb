@@ -36,14 +36,11 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
-  def update
+  def destroy
     @category = Category.find(params[:id])
-    if @category.update(category_params)
-      flash[:success] = "Nome de categoria atualizada com sucesso"
-      redirect_to category_path(@category)
-    else
-      render 'new'
-    end
+    @category.destroy
+    flash[:success] = "Categoria apagada com sucesso"
+    redirect_to categories_path
   end
 
   def show
