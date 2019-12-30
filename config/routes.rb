@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'about', to: 'welcome#about'
   get 'welcome/test', to: 'welcome#test'
   get 'articles', to: 'welcome#articles'
+  get 'meus_artigos', to: 'users#my_articles'
   
   get 'signup', to: 'users#new'
   resources :users, except: [:new]

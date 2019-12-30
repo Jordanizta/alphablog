@@ -45,6 +45,12 @@ class UsersController < ApplicationController
         redirect_to users_path
     end
 
+    def my_articles
+		@user = User.find_by(id: current_user)
+		@user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
+		render 'users/meus_artigos'
+	end
+
     private
     def user_params
         params.require(:user).permit(:username, :email, :password)
