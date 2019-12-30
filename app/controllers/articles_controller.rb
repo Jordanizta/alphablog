@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
+    @article.autor = current_user.username
 
     if @article.save
       flash[:success] = "Artigo criado com sucesso"
@@ -65,7 +66,7 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :description, :autor, category_ids: [])
+      params.require(:article).permit(:title, :description, category_ids: [])
     end
 
     def require_same_user
