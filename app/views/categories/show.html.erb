@@ -2,8 +2,10 @@
 
 <h1 class="center" style="color:#6441a5"><%= "Categoria: " + @category.name %></h1>
   <% if logged_in? and current_user.admin? %>
-    <div class="row">
+    <div class="row center">
       <span class="badge"><%= link_to "Editar nome de categoria", edit_category_path(@category) %></span>
+      <span class="badge"><%= link_to "Deletar categoria", category_path(@category), method: :delete,
+        data: { confirm: "Tem certeza?" } %></span>
     </div>
   <% end %>
 <div align="center">
@@ -15,5 +17,4 @@
 </div>
 <br>
 
-<%= link_to 'Página inicial', root_path %>  |  
-<%= link_to 'New Article', new_article_path %>
+<%= link_to 'Voltar para categorias', categories_path %>
