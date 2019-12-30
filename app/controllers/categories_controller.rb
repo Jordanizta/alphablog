@@ -38,9 +38,13 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    @category.destroy
-    flash[:success] = "Categoria apagada com sucesso"
-    redirect_to categories_path
+    if @category.destroy
+      flash[:success] = "Categoria apagada com sucesso."
+      redirect_to categories_path
+    else
+      flash[:danger] = "Impossível, pois existem artigos vinculados."
+      redirect_to category_path(@category)
+    end
   end
 
   def show
