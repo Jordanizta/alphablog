@@ -7,7 +7,7 @@ $navbar-default-bg: #6441a5;
     float: left;
     font-size: 1.7em;
     color: #fff;
-    text_transform: uppercase;
+    text-transform: uppercase;
     letter-spacing: -1px;
     font-weight: bold;
 }
@@ -23,7 +23,7 @@ $navbar-default-bg: #6441a5;
 
 .jumbotron {
     background-image: asset-url('rails.jpeg');
-    background-size: auto;
+    background-size: 100% 100%;
 }
 
 .jumbotron h1 {
