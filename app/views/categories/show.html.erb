@@ -4,12 +4,8 @@
   <% if logged_in? and current_user.admin? %>
     <div class="row center">
       <span class="badge"><%= link_to "Editar nome de categoria", edit_category_path(@category) %></span>
-      <% if logged_in? and current_user.admin? %>
-        <% if @category.articles.empty? %>
-          <span class="badge"><%= link_to "Deletar categoria", category_path(@category), method: :delete,
+      <span class="badge"><%= link_to "Deletar categoria", category_path(@category), method: :delete,
         data: { confirm: "Tem certeza?" } %></span>
-        <% end %>
-      <% end %>
     </div>
   <% end %>
 <div align="center">
