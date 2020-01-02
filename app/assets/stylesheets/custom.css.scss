@@ -66,6 +66,11 @@ $navbar-default-bg: #6441a5;
     border: #6441a5;
 }
 
+.btn-navi {
+    background-color: #6441a5;
+    border-color: white;
+}
+
 .btn {
     color: white;
     -webkit-transition-duration: 0.4s;
@@ -116,4 +121,16 @@ footer ul {
 footer ul li {
     float: left;
     margin-left: 15px;
+}
+
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+/* caret */
+.dropdown-menu:hover,
+.dropdown-menu:focus {
+    border-top-color: #6441a5;
+    border-bottom-color: #6441a5;
 }
