@@ -8,6 +8,11 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.paginate(page: params[:page], per_page: 10)
 
+    @search = params["search"]
+    if @search.present?
+      @name = @search["name"]
+      @articles = Article.where("title ILIKE ?", "%#{@name}%").paginate(page: params[:page])
+    end
   end
 
   # GET /articles/1
