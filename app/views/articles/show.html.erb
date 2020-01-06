@@ -32,5 +32,9 @@
       <% end %>
       <%= link_to "Ver todos os artigos", articles_path, class: "btn btn-xs btn-success" %>
     </div>
+    <div>
+      <%= button_to 'Like', article_reaction_path(@article), method: :post %>
+      <p><%= @article.reactions.count %> <%= (@article.reactions.count) == 1 ? 'Like' : 'Likes'%></p>
+    </div>
   </div>
 </div>
