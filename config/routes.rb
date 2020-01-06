@@ -18,4 +18,8 @@ Rails.application.routes.draw do
   resources :categories
   delete 'categories', to: 'categories#destroy'
 
+  resources :articles do
+    resources :reactions
+  end
+
 end
