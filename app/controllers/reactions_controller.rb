@@ -2,11 +2,18 @@ class ReactionsController < ApplicationController
 
 	def create
 		@article = Article.find(params[:article_id])
-		@article.reactions.create(user_id: current_user.id, article_id: @article.id)
-		redirect_to article_path(@article)
+		if already_reaction?
+			flash[:danger]= "Você já curtiu!"
+			redirect_to article_path(@article)
+		else
+			@article.reactions.create(user_id: current_user.id, article_id: @article.id)
+			flash[:success] = "Curtido!"
+			redirect_to article_path(@article)
+		end
 	end
 
-	def dislike
+	def already_reaction?
+		Reaction.where(user_id: current_user.id, article_id: params[:article_id]).exists?
 	end
 
 end
