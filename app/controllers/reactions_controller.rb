@@ -1,7 +1,7 @@
 class ReactionsController < ApplicationController
+	before_action :article_find
 
 	def create
-		@article = Article.find(params[:article_id])
 		if already_reaction?
 			flash[:danger]= "Você já curtiu!"
 			redirect_to article_path(@article)
@@ -14,6 +14,10 @@ class ReactionsController < ApplicationController
 
 	def already_reaction?
 		Reaction.where(user_id: current_user.id, article_id: params[:article_id]).exists?
+	end
+
+	def article_find
+		@article = Article.find(params[:article_id])
 	end
 
 end
