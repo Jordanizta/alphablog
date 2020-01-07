@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :reactions
+    delete 'reactions', to: 'reactions#dislike'
   end
 
 end

@@ -20,4 +20,14 @@ class ReactionsController < ApplicationController
 		@article = Article.find(params[:article_id])
 	end
 
+	def dislike
+		if !(already_reaction?)
+			flash[:danger] = "Não pode descurtir"
+		else
+			@article.reactions.where(user: current_user).destroy_all
+			flash[:success] = "Descurtido"
+		end
+		redirect_to article_path(@article)
+	end
+
 end
