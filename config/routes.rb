@@ -18,9 +18,7 @@ Rails.application.routes.draw do
   resources :categories
   delete 'categories', to: 'categories#destroy'
 
-  resources :articles do
-    resources :reactions
-    delete 'reactions', to: 'reactions#dislike'
-  end
+  post 'reactions', to: 'reactions#like'
+  put 'reactions', to: 'reactions#dislike'
 
 end
