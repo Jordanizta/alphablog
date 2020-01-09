@@ -3,7 +3,7 @@ class ReactionsController < ApplicationController
 
 	def like
 		if @reaction
-			update_reaction(true) if !@reaction.mood
+			update_reaction(true) if !@reaction.like
 		else
 			create_reaction(true)
 		end
@@ -13,7 +13,7 @@ class ReactionsController < ApplicationController
 
 	def dislike
 		if @reaction 
-			!@reaction.mood ? flash[:danger] = "Já era/é um deslike" : update_reaction(false)
+			!@reaction.like ? flash[:danger] = "Já era/é um deslike" : update_reaction(false)
 		else
 			@reaction = create_reaction(false)
 			flash[:danger] = "Descurtido"
@@ -32,12 +32,12 @@ class ReactionsController < ApplicationController
 		Reaction.new(
 			article_id: params[:article_id], 
 			user_id: current_user.id,
-			mood: like
+			like: like
 		).save
 	end
 
 	def update_reaction(like)
-		@reaction.update(mood: like)
+		@reaction.update(like: like)
 	end
 
 end
