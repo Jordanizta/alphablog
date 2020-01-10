@@ -9,4 +9,12 @@ class Article < ApplicationRecord
     validates :autor, presence: true, length: { minimum: 3, maximum: 40 }
     validates :user_id, presence: true
 
+    def likes_count
+        reactions.where(like: true).count
+    end
+
+    def dislikes_count
+        reactions.where(like: false).count
+    end
+
 end
