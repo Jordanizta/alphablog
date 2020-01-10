@@ -34,8 +34,8 @@
     </div>
     <div>
       <% if logged_in? %>
-        <%= link_to 'Like', like_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-primary"%>
-        <%= link_to 'Dislike', dislike_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-primary"%>
+        <%= link_to ' ', like_path(article_id: @article.id), method: :post, class: "glyphicon glyphicon-thumbs-up"%>
+        <%= link_to ' ', dislike_path(article_id: @article.id), method: :post, class: "glyphicon glyphicon-thumbs-down"%>
       <% end %>
       <p><%= @article.likes_count %> <%= (@article.likes_count) == 1 ? 'Like' : 'Likes'%>
       <%= @article.dislikes_count %> <%= (@article.dislikes_count) == 1 ? 'Dislike' : 'Dislikes'%></p>
