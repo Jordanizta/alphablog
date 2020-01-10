@@ -33,8 +33,10 @@
       <%= link_to "Ver todos os artigos", articles_path, class: "btn btn-xs btn-success" %>
     </div>
     <div>
-      <%= link_to 'Like', like_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-primary"%>
-      <%= link_to 'Dislike', dislike_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-primary"%>
+      <% if logged_in? %>
+        <%= link_to 'Like', like_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-primary"%>
+        <%= link_to 'Dislike', dislike_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-primary"%>
+      <% end %>
       <p><%= @article.likes_count %> <%= (@article.likes_count) == 1 ? 'Like' : 'Likes'%>
       <%= @article.dislikes_count %> <%= (@article.dislikes_count) == 1 ? 'Dislike' : 'Dislikes'%></p>
     </div>
