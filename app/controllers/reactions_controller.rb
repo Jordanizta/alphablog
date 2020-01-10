@@ -12,12 +12,13 @@ class ReactionsController < ApplicationController
 	end
 
 	def dislike
-		if @reaction 
-			!@reaction.like ? flash[:danger] = "Já era/é um deslike" : update_reaction(false)
+		if @reaction
+			update_reaction(false) if @reaction.like
 		else
-			@reaction = create_reaction(false)
-			flash[:danger] = "Descurtido"
+			
+			create_reaction(false)
 		end
+		flash[:danger] = "Descurtido"
 		redirect_to article_path(params[:article_id])
 	end
 
@@ -29,10 +30,10 @@ class ReactionsController < ApplicationController
 	end
 
 	def create_reaction(like)
-		Reaction.new(
-			article_id: params[:article_id], 
-			user_id: current_user.id,
-			like: like
+		Reaction.new( 
+			user_id: current_user.id, 
+			article_id: params[:article_id],  
+			like: like 
 		).save
 	end
 
