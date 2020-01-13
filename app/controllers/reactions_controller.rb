@@ -15,7 +15,6 @@ class ReactionsController < ApplicationController
 		if @reaction
 			update_reaction(false) if @reaction.like
 		else
-			
 			create_reaction(false)
 		end
 		flash[:danger] = "Descurtido"
