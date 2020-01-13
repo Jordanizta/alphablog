@@ -10,11 +10,16 @@ class Article < ApplicationRecord
     validates :user_id, presence: true
 
     def likes_count
-        reactions.where(like: true).count
+        self.reactions.where(like: true).count
     end
 
     def dislikes_count
-        reactions.where(like: false).count
+        self.reactions.where(like: false).count
+    end
+
+    def check_like?(user)
+        @reaction = self.reactions.find_by(user_id: user)
+        return @reaction.like?
     end
 
 end
