@@ -32,13 +32,17 @@
       <% end %>
       <%= link_to "Ver todos os artigos", articles_path, class: "btn btn-xs btn-success" %>
     </div>
-    <div>
+  </div>
+  <div class="center col-xs-8 col-xs-offset-2">
+    <div class="right article-actions">
       <% if logged_in? %>
         <%= link_to ' ', like_path(article_id: @article.id), method: :post, class: "glyphicon glyphicon-thumbs-up"%>
+        <%= @article.likes_count %>
         <%= link_to ' ', dislike_path(article_id: @article.id), method: :post, class: "glyphicon glyphicon-thumbs-down"%>
+        <%= @article.dislikes_count %>
       <% end %>
-      <p><%= @article.likes_count %> <%= (@article.likes_count) == 1 ? 'Like' : 'Likes'%>
-      <%= @article.dislikes_count %> <%= (@article.dislikes_count) == 1 ? 'Dislike' : 'Dislikes'%></p>
+      <p class="right"><%= @article.likes_count %> <%= (@article.likes_count) == 1 ? 'Like' : 'Likes'%>
+        <%= @article.dislikes_count %> <%= (@article.dislikes_count) == 1 ? 'Dislike' : 'Dislikes'%></p>
     </div>
   </div>
 </div>

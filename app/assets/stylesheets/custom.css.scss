@@ -21,6 +21,10 @@ $navbar-default-bg: #6441a5;
     text-align: center;
 }
 
+.right{
+	text-align: right;
+}
+
 .jumbotron {
     background-image: asset-url('rails.jpeg');
     background-size: auto;
