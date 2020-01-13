@@ -36,10 +36,22 @@
   <div class="center col-xs-8 col-xs-offset-2">
     <div class="right article-actions">
       <% if logged_in? %>
-        <%= link_to ' ', like_path(article_id: @article.id), method: :post, class: "glyphicon glyphicon-thumbs-up"%>
-        <%= @article.likes_count %>
-        <%= link_to ' ', dislike_path(article_id: @article.id), method: :post, class: "glyphicon glyphicon-thumbs-down"%>
-        <%= @article.dislikes_count %>
+        <% if @article.check_like?(@article.user) %>
+          <%= link_to ' ', like_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-success disabled glyphicon glyphicon-thumbs-up"%>
+          <%= @article.likes_count %>
+          <%= link_to ' ', dislike_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-danger glyphicon glyphicon-thumbs-down"%>
+          <%= @article.dislikes_count %>
+        <% elsif !@article.check_like?(@article.user) %>
+          <%= link_to ' ', like_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-success glyphicon glyphicon-thumbs-up"%>
+          <%= @article.likes_count %>
+          <%= link_to ' ', dislike_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-danger disabled glyphicon glyphicon-thumbs-down"%>
+          <%= @article.dislikes_count %>
+        <% else %>
+          <%= link_to ' ', like_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-success glyphicon glyphicon-thumbs-up"%>
+          <%= @article.likes_count %>
+          <%= link_to ' ', dislike_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-danger glyphicon glyphicon-thumbs-down"%>
+          <%= @article.dislikes_count %>
+        <% end %>
       <% end %>
       <p class="right"><%= @article.likes_count %> <%= (@article.likes_count) == 1 ? 'Like' : 'Likes'%>
         <%= @article.dislikes_count %> <%= (@article.dislikes_count) == 1 ? 'Dislike' : 'Dislikes'%></p>
