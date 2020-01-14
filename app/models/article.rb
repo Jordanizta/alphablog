@@ -17,6 +17,11 @@ class Article < ApplicationRecord
         self.reactions.where(like: false).count
     end
 
+    def react_exists?(user)
+        @reaction = self.reactions.find_by(user_id: user)
+        return @reaction.present?
+    end
+
     def check_like?(user)
         @reaction = self.reactions.find_by(user_id: user)
         return @reaction.like?

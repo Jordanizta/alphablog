@@ -1,0 +1,20 @@
+<% if logged_in? %>
+  <% if @article.react_exists?(user) %>
+    <% if @article.check_like?(user) %>
+      <%= link_to ' ', like_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-success disabled glyphicon glyphicon-thumbs-up"%>
+      <%= @article.likes_count %>
+      <%= link_to ' ', dislike_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-danger glyphicon glyphicon-thumbs-down"%>
+      <%= @article.dislikes_count %>
+    <% else %>
+      <%= link_to ' ', like_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-success glyphicon glyphicon-thumbs-up"%>
+      <%= @article.likes_count %>
+      <%= link_to ' ', dislike_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-danger disabled glyphicon glyphicon-thumbs-down"%>
+      <%= @article.dislikes_count %>
+    <% end %>
+  <% else %>
+    <%= link_to ' ', like_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-success glyphicon glyphicon-thumbs-up"%>
+    <%= @article.likes_count %>
+    <%= link_to ' ', dislike_path(article_id: @article.id), method: :post, class: "btn btn-xs btn-danger glyphicon glyphicon-thumbs-down"%>
+    <%= @article.dislikes_count %>
+  <% end %>
+<% end %>
