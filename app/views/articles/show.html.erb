@@ -33,7 +33,7 @@
       <%= link_to "Ver todos os artigos", articles_path, class: "btn btn-xs btn-success" %>
     </div>
   </div>
-  <div class="center col-xs-8 col-xs-offset-2">
+  <div class="right col-xs-8 col-xs-offset-2">
     <div class="right article-actions">
       <%= render 'reactions/reactbtn', user: current_user %>
       <p class="right"><%= @article.likes_count %> <%= (@article.likes_count) == 1 ? 'Like' : 'Likes'%>

@@ -18,14 +18,12 @@
             data: {confirm: "Certeza que deseja deletar?"}, 
             class: "btn btn-xs btn-danger" %>
           <% end %>
+          <div class="right">
+            <b class="right glyphicon glyphicon-thumbs-up"> <%= article.likes_count %> </b>
+            <b class="right glyphicon glyphicon-thumbs-down"> <%= article.dislikes_count %> </b>
+          </div>
         </div>
       </div>
     </div>
   </div>
 <% end %>
-  <!-- #ordenação 
-  <%= form_tag articles_path, method: :get do %>
-    Ordenar por:
-    <%= select_tag :order,  options_for_select([:id, :autor, :updated_at], selected: :autor), id: "different_option_value_html", onchange: "this.form.submit();"%>
-    <%= submit_tag 'Ordenar', :id => 'submit_button' %>
-  <% end %> -->
