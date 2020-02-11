@@ -12,12 +12,7 @@
           <% if article.categories.any? %>
             <p>Categorias: <%= render article.categories %></p>
           <% end %>
-          <% if logged_in? && current_user == article.user %>
-            <%= link_to "Editar esse artigo", edit_article_path(article), class: "btn btn-xs btn-primary" %>
-            <%= link_to "Deletar esse artigo", article_path(article), method: :delete,
-            data: {confirm: "Certeza que deseja deletar?"}, 
-            class: "btn btn-xs btn-danger" %>
-          <% end %>
+          <% adm_article_buttons(article, article.user) %>
           <div class="right">
             <b class="right glyphicon glyphicon-thumbs-up"> <%= article.likes_count %> </b>
             <b class="right glyphicon glyphicon-thumbs-down"> <%= article.dislikes_count %> </b>
